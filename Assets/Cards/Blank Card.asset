@@ -10,8 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f29f51a119824ec4bbbe9debdf7d3328, type: 3}
-  m_Name: Pain Card
+  m_Name: Blank Card
   m_EditorClassIdentifier: 
-  mainTexture: {fileID: 0}
-  description: 
-  impact: 0
