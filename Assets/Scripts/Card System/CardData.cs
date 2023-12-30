@@ -1,4 +1,4 @@
-using System;
+
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 #if UNITY_EDITOR
 
+using System;
 using UnityEditor;
 
 #endif
@@ -63,10 +64,11 @@ public class CardData : ScriptableObject
             bool CardFXGroup = false;
             int size = data.effects.Count;
             CardFXGroup = EditorGUILayout.BeginFoldoutHeaderGroup(CardFXGroup, "Card Effects");
+            size = (int)EditorGUILayout.IntField(size);
             if(true)
             {
                 
-                size = (int)EditorGUILayout.IntField(size);
+                
 
                 while(size > data.effects.Count)
                 {
@@ -91,25 +93,34 @@ public class CardData : ScriptableObject
                     EditorGUILayout.PrefixLabel("Effect");
                     EditorGUILayout.BeginVertical();
                     for(int j = 0; j < item.effects.Count; j++)
-                    {
-                        item.effects[j] = (CardFX)EditorGUILayout.ObjectField(item.effects[j], typeof(CardFX), false);
+                    {   
+                        bool mt = false;
+                        CardFX fx = createCardField(item.effects[j], out mt);
+                        if(mt) { item.effects[j] = fx; }
                     }
-                    CardFX newFX = (CardFX)EditorGUILayout.ObjectField(null, typeof(CardFX), false);
-                    if(newFX != null)
-                    {
-                        item.effects.Add(newFX);
-                    }
+                    bool m = false;
+                    item.effects.RemoveAll(it => it == null);
+                    CardFX newfx = createCardField(null, out m);
+                    if(newfx != null && m) { item.effects.Add(newfx); }
                     EditorGUILayout.EndVertical();
                     EditorGUILayout.EndHorizontal();
                     EditorGUILayout.Space();
                 }
-
-                //data.ApplyModifiedProperties();
             }
             EditorGUILayout.EndFoldoutHeaderGroup();
-
         }
-
+        
+        public CardFX? createCardField(CardFX defValue, out bool match)
+        {
+            
+            MonoScript script = EditorGUILayout.ObjectField(defValue, typeof(MonoScript), false) as MonoScript;
+            if(script == null){ match = false; return null; }
+            System.Type t = script.GetClass();
+            if(!typeof(CardFX).IsAssignableFrom(t)){ match = true; return null; }
+            match = true;
+            return (CardFX)Activator.CreateInstance(t);
+        }
+            
     }
 
     #endif    
