@@ -27,9 +27,9 @@ public class CardDataCustomEditor : Editor
     }
 }
 
-[CustomEditor(typeof(CardFX))]
+/*[CustomEditor(typeof(CardFX))]
 public class CardFXCustomEditor : Editor{
-/*
+
     public override void OnInspectorGUI()
     {
         CardFX data = (CardFX)target;
@@ -51,5 +51,6 @@ public class CardFXCustomEditor : Editor{
         match = true;
         return (CardFX)Activator.CreateInstance(t);
     }
-*/
+
 }
+*/

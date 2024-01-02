@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEditor.ProjectWindowCallback;
 using UnityEditor;
 #endif
-
+/*
 [Serializable]
 public class CardFXContainer : ScriptableObject
 {
@@ -38,15 +38,22 @@ public class CardFXContainer : ScriptableObject
         this.cardFX = value;
     }
     
-}
+}*/
 
-
-public interface CardFX
+[Serializable]
+public abstract class CardEffect : ScriptableObject, ICardFX
 {
-    public void execute(CardEventCircumstances circumstances);
+    public abstract void execute(CardEventCircumstances circumstances);
 
-    public string getCardEffectName();
+    public abstract string getCardEffectName();
     
+    public static List<Type> ListSimilarCardEffects()
+    {
+        List<Type> fxList = new List<Type>();
+        //TODO - List all classes that inherit from this one
+        return fxList;
+    }
+
     #if UNITY_EDITOR
         public class CreateCardFXAsset
         {
@@ -54,7 +61,7 @@ public interface CardFX
             public static void CreateAsset()
             {
                 ProjectWindowUtil.CreateAssetWithContent("NewCardFX.cs",
-                "public class newCardFX : CardFX\n{\n\tpublic override void execute (CardEventCircumstances circumstances) { return; }\n}",
+                "public class newCardFX : CardEffect\n{\n\tpublic override void execute (CardEventCircumstances circumstances) { return; }\n}",
                 EditorGUIUtility.IconContent("cs Script Icon").image as Texture2D);
             }
         }

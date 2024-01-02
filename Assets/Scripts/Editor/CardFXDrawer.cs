@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEditor.ProjectWindowCallback;
 using UnityEditor;
 
-[CustomPropertyDrawer(typeof(CardFXContainer))]
+//[CustomPropertyDrawer(typeof(CardFXContainer))]
 public class CardFXDrawer : PropertyDrawer
 {
     
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
-    {
+    {/*
         EditorGUI.BeginProperty(position, label, property);
 
         Rect labelPosition = new Rect(position.x, position.y, position.width, position.height);
@@ -29,6 +29,6 @@ public class CardFXDrawer : PropertyDrawer
         EditorGUI.EndProperty();
         //if(scriptProperty.objectReferenceValue == null) return;
 
-        //DrawProperties();
+        //DrawProperties();*/
     }
 }

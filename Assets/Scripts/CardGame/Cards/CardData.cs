@@ -4,6 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
+public class EffectPair
+{
+    public List<CardEffect> effects;
+    public string trigger;
+}
+
+
+[Serializable]
 public class CardData   
 {
     
@@ -33,6 +41,6 @@ public class CardData
 
     [Tooltip("The card's effects")]
     [SerializeField]
-    public List<CardFXContainer> cardEffectList;
+    public List<EffectPair> cardEffectList;
 }
 

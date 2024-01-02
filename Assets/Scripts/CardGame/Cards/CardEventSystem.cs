@@ -26,7 +26,7 @@ public class CardEventSystem : MonoBehaviour
         
     }
 
-    public static void addEvent(string eventName, Action<CardEventCircumstances>? method )
+    public static void AddEvent(string eventName, Action<CardEventCircumstances>? method )
     {
         if(method == null){ return; }
         if(!instance.events.ContainsKey(eventName))
@@ -37,14 +37,14 @@ public class CardEventSystem : MonoBehaviour
         instance.events[eventName] += method;
     }
 
-    public static void removeEvent(string eventName, Action<CardEventCircumstances>? method )
+    public static void RemoveEvent(string eventName, Action<CardEventCircumstances>? method )
     {
         if(method == null){ return; }
         if(! instance.events.ContainsKey(eventName)) { return; }
         instance.events[eventName] -= method;
     }
 
-    public static void invokeEvent(string eventName, CardEventCircumstances circumstances)
+    public static void InvokeEvent(string eventName, CardEventCircumstances circumstances)
     {
         instance.events[eventName](circumstances);
     }
