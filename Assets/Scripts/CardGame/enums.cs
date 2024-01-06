@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 
-enum SinLineColor
+public enum SinLineColor
 { neutral, irreverence, sadness, fear, riot }
 
-enum PlayerCardSuit
+public enum PlayerCardSuit
 { blame, redeem, press, commiserate }
 
-enum SinCardSuit
-{ unbelief, violence, selfishness , neglect }
+public enum SinnerCardSuit
+{ unbelief, violence, selfishness, neglect }

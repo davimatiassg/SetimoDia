@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="container">
+        <ui:VisualElement tooltip="CardEffectPair">
+            <ui:GroupBox name="GroupBox" style="flex-direction: row; align-items: stretch; justify-content: space-around; height: 23px;">
+                <ui:Label text="Trigger" display-tooltip-when-elided="true" name="triggerLabel" style="height: 14px; width: 44px; -unity-text-align: lower-left;" />
+                <ui:Label text="Effect" display-tooltip-when-elided="true" name="effectLabel" style="align-items: flex-end; overflow: visible; white-space: normal; position: relative; flex-direction: column;" />
+            </ui:GroupBox>
+            <ui:GroupBox style="flex-direction: row;">
+                <ui:TextField picking-mode="Ignore" value="filler text" text="filler text" name="trigger-field" style="height: 20px; width: 165px;" />
+                <ui:ListView focusable="true" name="fx-list-field" style="height: 22px; width: 185px;" />
+            </ui:GroupBox>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
